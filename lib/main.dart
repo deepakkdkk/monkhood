@@ -72,38 +72,24 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: CupertinoTabScaffold(
           tabBar: CupertinoTabBar(
-            
             items: [
               BottomNavigationBarItem(
-
-                icon: Image(
-                  image: AssetImage('assets/home.png'),
-                ),
+                activeIcon: BottomItemActive('assets/home_selected.png'),
+                icon: BottomItemInactive('assets/home_unselected.png'),
                 label: 'Home',
               ),
-              // color: Color(0xFF345C5F),
-
               BottomNavigationBarItem(
-                activeIcon: Image(
-                  image: AssetImage('assets/profile.png'),
-                ),,
-                icon: Image(
-                  image: AssetImage('assets/chat_selected.png'),
-                ),
+                activeIcon: BottomItemActive('assets/chat_selected.png'),
+                icon: BottomItemInactive('assets/chat_unselected.png'),
                 label: 'Chat',
               ),
               BottomNavigationBarItem(
-                  // activeIcon: Image(
-                  //   image: AssetImage("assets/home.png"),
-                  // ),
-                  icon: Image(
-                    image: AssetImage(''),
-                  ),
+                  activeIcon: BottomItemActive('assets/feedback_selected.png'),
+                  icon: BottomItemInactive('assets/feedback_unselected.png'),
                   label: 'Feedback'),
               BottomNavigationBarItem(
-                icon: Image(
-                  image: AssetImage('assets/profile.png'),
-                ),
+                activeIcon: BottomItemActive('assets/profile_selected.png'),
+                icon: BottomItemInactive('assets/profile_unselected.png'),
                 label: 'Profile',
               ),
             ],
@@ -147,15 +133,30 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-// switch (index) {
-//             case 0:
-//               return CupertinoTabView(
-//                 builder: (context) {
-//                   return CupertinoPageScaffold(
-//                     child: HomePage(),
-//                   );
-//             case 1: return CupertinoTabView(builder: (context){return CupertinoPageScaffold(child: Message(),);},);
-             
-//                 },
-//               );
-//           }
+class BottomItemActive extends StatelessWidget {
+  final String selectedItem;
+  BottomItemActive(this.selectedItem);
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(3.0),
+      child: Image(
+        image: AssetImage(selectedItem),
+      ),
+    );
+  }
+}
+
+class BottomItemInactive extends StatelessWidget {
+  final String unselectedItem;
+  BottomItemInactive(this.unselectedItem);
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(3.0),
+      child: Image(
+        image: AssetImage(unselectedItem),
+      ),
+    );
+  }
+}
