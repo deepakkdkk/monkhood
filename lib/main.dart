@@ -72,20 +72,23 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: CupertinoTabScaffold(
           tabBar: CupertinoTabBar(
+            
             items: [
               BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                  // color: Color(0xFF345C5F),
+
+                icon: Image(
+                  image: AssetImage('assets/home.png'),
                 ),
                 label: 'Home',
               ),
               // color: Color(0xFF345C5F),
 
               BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.messenger_outline_sharp,
-                  color: Color(0xFF345C5F),
+                activeIcon: Image(
+                  image: AssetImage('assets/profile.png'),
+                ),,
+                icon: Image(
+                  image: AssetImage('assets/chat_selected.png'),
                 ),
                 label: 'Chat',
               ),
@@ -93,15 +96,13 @@ class _MyAppState extends State<MyApp> {
                   // activeIcon: Image(
                   //   image: AssetImage("assets/home.png"),
                   // ),
-                  icon: Icon(
-                    Icons.favorite_border_outlined,
-                    color: Color(0xFF345C5F),
+                  icon: Image(
+                    image: AssetImage(''),
                   ),
                   label: 'Feedback'),
               BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.person,
-                  color: Color(0xFF345C5F),
+                icon: Image(
+                  image: AssetImage('assets/profile.png'),
                 ),
                 label: 'Profile',
               ),
