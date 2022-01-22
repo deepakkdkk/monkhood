@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'full_screenPhoto.dart';
+import 'last_searchTap.dart';
+
 
 class LastSearch extends StatefulWidget {
   final String rate;

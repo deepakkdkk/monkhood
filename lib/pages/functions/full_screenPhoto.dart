@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'last_searchPage.dart';
 import 'build_Sheet.dart';
+import 'build_Sheet.dart';
+import 'heading_page.dart';
+import 'last_searchTap.dart';
 
 class FullScreenPhoto extends StatefulWidget {
   final String image;
@@ -24,40 +27,108 @@ class _FullScreenPhotoState extends State<FullScreenPhoto> {
         padding: const EdgeInsets.all(10.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          verticalDirection: VerticalDirection.down,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(
-              height: 30,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+                  child: GestureDetector(
+                    child: Icon(
+                      Icons.arrow_left,
+                      size: 40.0,
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 40, 10, 0),
+                  child: GestureDetector(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Color(0xFF38383F),
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Image(
+                          height: 20,
+                          width: 20,
+                          image: AssetImage('assets/globe_image.png'),
+                        ),
+                      ),
+                    ),
+                    onTap: () {
+                      showModalBottomSheet(
+                        isDismissible: true,
+                        isScrollControlled: true,
+                        backgroundColor: Colors.transparent,
+                        context: context,
+                        builder: (context) => buildSheet(),
+                      );
+                    },
+                  ),
+                )
+              ],
             ),
-            GestureDetector(
-              child: Icon(
-                Icons.arrow_left,
-                size: 40.0,
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  child: Text(
+                    'Block B',
+                    style: TextStyle(
+                      decoration: TextDecoration.none,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Montserrat',
+                      fontSize: 35,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  child: Text(
+                    'Sector 17',
+                    style: TextStyle(
+                      decoration: TextDecoration.none,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Montserrat',
+                      fontSize: 35,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
+                  child: Text(
+                    'Rohini',
+                    style: TextStyle(
+                      decoration: TextDecoration.none,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Montserrat',
+                      fontSize: 35,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 45),
+                  child: Text(
+                    '2BHK Builder Flats',
+                    style: TextStyle(
+                      decoration: TextDecoration.none,
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              ],
             ),
-            Text('2 BhK'),
-            SizedBox(
-              height: 10,
-            ),
-            Text('rohini'),
-            GestureDetector(
-              child: Icon(
-                Icons.rounded_corner,
-                size: 50,
-              ),
-              onTap: () {
-                showModalBottomSheet(
-                  isDismissible: true,
-                  isScrollControlled: true,
-                  backgroundColor: Colors.transparent,
-                  context: context,
-                  builder: (context) => buildSheet(),
-                );
-              },
-            )
           ],
         ),
       ),
@@ -65,68 +136,3 @@ class _FullScreenPhotoState extends State<FullScreenPhoto> {
   }
 }
 
-class LastSearchTap extends StatefulWidget {
-  final String image;
-  LastSearchTap(this.image);
-  @override
-  _LastSearchTapState createState() => _LastSearchTapState();
-}
-
-class _LastSearchTapState extends State<LastSearchTap> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          fit: BoxFit.cover,
-          image: AssetImage(widget.image),
-        ),
-      ),
-      child: Column(
-        children: [
-          SizedBox(
-            height: 20,
-          ),
-          GestureDetector(
-            child: Icon(
-              Icons.arrow_left,
-              size: 40.0,
-            ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          Text('2BHK',
-          ),
-          SizedBox(
-            height: 100,
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
-                  )),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Text(
-                      'this is very good place to stay',
-                      style: TextStyle(
-                        fontSize: 100,
-                        fontFamily: 'Montserrat',
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
