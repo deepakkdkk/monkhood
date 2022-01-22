@@ -13,6 +13,7 @@ class Heading extends StatelessWidget {
           fontSize: 15,
           color: Color(0xFF608386),
           fontWeight: FontWeight.bold,
+          fontFamily: 'Montserrat',
         ),
         textAlign: TextAlign.left,
       ),

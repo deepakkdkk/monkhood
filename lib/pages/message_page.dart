@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monkhood/pages/home_page.dart';
 
 class Message extends StatefulWidget {
   @override
@@ -15,10 +16,7 @@ class _MessageState extends State<Message> {
         ),
       ),
       body: Center(
-        child: RaisedButton(
-          onPressed: () => Navigator.pop(context),
-          child: Text('Go to homepage'),
-        ),
+        child: Text("It's chat screen"),
       ),
     );
   }

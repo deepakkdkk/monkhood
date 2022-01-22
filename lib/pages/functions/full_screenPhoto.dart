@@ -46,7 +46,7 @@ class _FullScreenPhotoState extends State<FullScreenPhoto> {
             GestureDetector(
               child: Icon(
                 Icons.rounded_corner,
-                size: 20,
+                size: 50,
               ),
               onTap: () {
                 showModalBottomSheet(
@@ -60,6 +60,72 @@ class _FullScreenPhotoState extends State<FullScreenPhoto> {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class LastSearchTap extends StatefulWidget {
+  final String image;
+  LastSearchTap(this.image);
+  @override
+  _LastSearchTapState createState() => _LastSearchTapState();
+}
+
+class _LastSearchTapState extends State<LastSearchTap> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: AssetImage(widget.image),
+        ),
+      ),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 20,
+          ),
+          GestureDetector(
+            child: Icon(
+              Icons.arrow_left,
+              size: 40.0,
+            ),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          Text('2BHK',
+          ),
+          SizedBox(
+            height: 100,
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  )),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Text(
+                      'this is very good place to stay',
+                      style: TextStyle(
+                        fontSize: 100,
+                        fontFamily: 'Montserrat',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

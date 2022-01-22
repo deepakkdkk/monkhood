@@ -57,6 +57,7 @@ class _HomePageState extends State<HomePage> {
                 StickyHeader(
                   header: SearchBar(),
                   content: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         height: 100,

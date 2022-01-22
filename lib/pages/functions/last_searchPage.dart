@@ -13,42 +13,47 @@ class _LastSearchState extends State<LastSearch> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
-        height: 150,
-        width: 150,
-        decoration: new BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-            bottomLeft: Radius.circular(20),
-            bottomRight: Radius.circular(20),
+      child: GestureDetector(
+        onTap: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => LastSearchTap(widget.photo),),);
+        },
+        child: Container(
+          height: 175,
+          width: 150,
+          decoration: new BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+              bottomLeft: Radius.circular(20),
+              bottomRight: Radius.circular(20),
+            ),
+            image: DecorationImage(
+              fit: BoxFit.fill,
+              image: AssetImage(widget.photo),
+            ),
           ),
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: AssetImage(widget.photo),
-          ),
-        ),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(widget.rate),
-                GestureDetector(
-                  child: Icon(
-                    Icons.fullscreen,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(widget.rate),
+                  GestureDetector(
+                    child: Icon(
+                      Icons.fullscreen,
+                    ),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => FullScreenPhoto(widget.photo)),
+                      );
+                    },
                   ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => FullScreenPhoto(widget.photo)),
-                    );
-                  },
-                ),
-              ],
-            )
-          ],
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
