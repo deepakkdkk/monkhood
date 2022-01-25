@@ -24,7 +24,13 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Container(
                   child: ListTile(
-                    leading: CircleAvatar(child: Icon(Icons.location_city)),
+                    leading: Padding(
+                      padding: const EdgeInsets.fromLTRB(5, 8, 3, 8),
+                      child: Image(
+                        
+                        image: AssetImage("assets/location_image.png"),
+                      ),
+                    ),
                     trailing: CircleAvatar(
                       child: Image(
                         image: AssetImage("assets/profile_image.png"),

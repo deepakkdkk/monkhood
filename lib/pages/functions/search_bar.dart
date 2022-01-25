@@ -28,9 +28,10 @@ class _SearchBarState extends State<SearchBar> {
                   prefixIcon: Align(
                     widthFactor: 0.1,
                     child: FlatButton(
-                      child: Icon(
-                        Icons.search,
-                        size: 30.0,
+                      child: Image(
+                        height: 20,
+                        width: 20,
+                        image: AssetImage("assets/search_image.png"),
                       ),
                       onPressed: () {},
                     ),

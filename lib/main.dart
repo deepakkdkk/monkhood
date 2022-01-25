@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
               ),
               BottomNavigationBarItem(
                 activeIcon: BottomItemActive('assets/feedback_selected.png'),
-                icon: BottomItemInactive('assets/feedback_unselected.png'),
+                icon: BottomItemInactive('assets/favourite_unselected.png'),
               ),
               BottomNavigationBarItem(
                 activeIcon: BottomItemActive('assets/profile_selected.png'),
