@@ -24,21 +24,18 @@ class _MyAppState extends State<MyApp> {
               BottomNavigationBarItem(
                 activeIcon: BottomItemActive('assets/home_selected.png'),
                 icon: BottomItemInactive('assets/home_unselected.png'),
-                label: 'Home',
               ),
               BottomNavigationBarItem(
                 activeIcon: BottomItemActive('assets/chat_selected.png'),
                 icon: BottomItemInactive('assets/chat_unselected.png'),
-                label: 'Chat',
               ),
               BottomNavigationBarItem(
-                  activeIcon: BottomItemActive('assets/feedback_selected.png'),
-                  icon: BottomItemInactive('assets/feedback_unselected.png'),
-                  label: 'Feedback'),
+                activeIcon: BottomItemActive('assets/feedback_selected.png'),
+                icon: BottomItemInactive('assets/feedback_unselected.png'),
+              ),
               BottomNavigationBarItem(
                 activeIcon: BottomItemActive('assets/profile_selected.png'),
                 icon: BottomItemInactive('assets/profile_unselected.png'),
-                label: 'Profile',
               ),
             ],
           ),
@@ -87,7 +84,7 @@ class BottomItemActive extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(3.0),
+      padding: const EdgeInsets.all(5.0),
       child: Image(
         image: AssetImage(selectedItem),
       ),
@@ -101,7 +98,7 @@ class BottomItemInactive extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(3.0),
+      padding: const EdgeInsets.all(5.0),
       child: Image(
         image: AssetImage(unselectedItem),
       ),

@@ -37,16 +37,17 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   color: Color(0xFFDEECED),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Services(
                         servicename: 'Flats',
                       ),
                       Services(
-                        servicename: 'furniture',
+                        servicename: 'Furniture',
                       ),
                       Services(
-                        servicename: 'appliances',
+                        servicename: 'Appliances',
                       ),
                       Services(
                         servicename: 'Services',
@@ -60,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        height: 100,
+                        height: 200,
                         color: Color(0xFFC4C4C4),
                       ),
                       SizedBox(

@@ -10,6 +10,7 @@ class Heading extends StatelessWidget {
       child: Text(
         texting,
         style: TextStyle(
+          decoration: TextDecoration.none,
           fontSize: 15,
           color: Color(0xFF608386),
           fontWeight: FontWeight.bold,

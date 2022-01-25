@@ -9,31 +9,32 @@ class _SearchBarState extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 100,
       color: Colors.white,
       child: Row(
         children: [
           Expanded(
             flex: 5,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(10, 13, 10, 13),
+              padding: const EdgeInsets.fromLTRB(10, 18, 10, 18),
               child: TextField(
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Color(0xFFF2F2F2),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(45),
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(40),
                   ),
-                  prefixIcon: FlatButton(
-                    child: Icon(
-                      Icons.search,
+                  prefixIcon: Align(
+                    widthFactor: 0.1,
+                    child: FlatButton(
+                      child: Icon(
+                        Icons.search,
+                        size: 30.0,
+                      ),
+                      onPressed: () {},
                     ),
-                    onPressed: () {},
                   ),
-                  // suffixIcon: Image(
-                  //   height: 10.0,
-                  //   width: 10.0,
-                  //   image: AssetImage('assets/filter_icon.png'),
-                  // ),
                   hintText: 'Enter the place name',
                   hintStyle: TextStyle(
                     color: Colors.grey,
