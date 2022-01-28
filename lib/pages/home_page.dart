@@ -27,7 +27,6 @@ class _HomePageState extends State<HomePage> {
                     leading: Padding(
                       padding: const EdgeInsets.fromLTRB(5, 8, 3, 8),
                       child: Image(
-                        
                         image: AssetImage("assets/location_image.png"),
                       ),
                     ),

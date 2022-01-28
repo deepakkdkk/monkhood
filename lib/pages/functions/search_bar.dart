@@ -9,14 +9,14 @@ class _SearchBarState extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 80,
       color: Colors.white,
       child: Row(
         children: [
           Expanded(
             flex: 5,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(10, 18, 10, 18),
+              padding: const EdgeInsets.fromLTRB(10, 17, 10, 17),
               child: TextField(
                 decoration: InputDecoration(
                   filled: true,

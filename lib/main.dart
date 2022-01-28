@@ -22,20 +22,84 @@ class _MyAppState extends State<MyApp> {
           tabBar: CupertinoTabBar(
             items: [
               BottomNavigationBarItem(
-                activeIcon: BottomItemActive('assets/home_selected.png'),
-                icon: BottomItemInactive('assets/home_unselected.png'),
+                // activeIcon: BottomItemActive('assets/home_selected.png'),
+                activeIcon: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(35, 9, 0, 9),
+                    child: Image(
+                      image: AssetImage('assets/home_selected.png'),
+                    ),
+                  ),
+                ),
+                // icon: BottomItemInactive('assets/home_unselected.png'),
+                icon: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(15, 9, 0, 9),
+                    child: Image(
+                      image: AssetImage('assets/home_unselected.png'),
+                    ),
+                  ),
+                ),
               ),
               BottomNavigationBarItem(
-                activeIcon: BottomItemActive('assets/chat_selected.png'),
-                icon: BottomItemInactive('assets/chat_unselected.png'),
+                // activeIcon: BottomItemActive('assets/chat_selected.png'),
+                activeIcon: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(15, 9, 0, 9),
+                    child: Image(
+                      image: AssetImage('assets/chat_selected.png'),
+                    ),
+                  ),
+                ),
+                // icon: BottomItemInactive('assets/chat_unselected.png'),
+                icon: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(15, 9, 0, 9),
+                    child: Image(
+                      image: AssetImage('assets/chat_unselected.png'),
+                    ),
+                  ),
+                ),
               ),
               BottomNavigationBarItem(
-                activeIcon: BottomItemActive('assets/feedback_selected.png'),
-                icon: BottomItemInactive('assets/favourite_unselected.png'),
+                // activeIcon: BottomItemActive('assets/feedback_selected.png'),
+                activeIcon: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 9, 15, 9),
+                    child: Image(
+                      image: AssetImage('assets/feedback_unselected.png'),
+                    ),
+                  ),
+                ),
+                // icon: BottomItemInactive('assets/favourite_unselected.png'),
+                icon: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 9, 15, 9),
+                    child: Image(
+                      image: AssetImage('assets/favourite_unselected.png'),
+                    ),
+                  ),
+                ),
               ),
               BottomNavigationBarItem(
-                activeIcon: BottomItemActive('assets/profile_selected.png'),
-                icon: BottomItemInactive('assets/profile_unselected.png'),
+                // activeIcon: BottomItemActive('assets/profile_selected.png'),
+                activeIcon: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 9, 0, 9),
+                    child: Image(
+                      image: AssetImage('assets/profile_selected.png'),
+                    ),
+                  ),
+                ),
+                // icon: BottomItemInactive('assets/profile_unselected.png'),
+                icon: Container(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 9, 35, 9),
+                    child: Image(
+                      image: AssetImage('assets/profile_unselected.png'),
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
@@ -57,6 +121,7 @@ class _MyAppState extends State<MyApp> {
               case 2:
                 return CupertinoTabView(builder: (context) {
                   return CupertinoPageScaffold(
+                    resizeToAvoidBottomInset: false,
                     child: FeedbackPage(),
                   );
                 });
@@ -78,14 +143,27 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
+Widget bottombar(String selectedItem) {
+  return Container(
+    child: Padding(
+      padding: const EdgeInsets.fromLTRB(0, 9, 0, 9),
+      child: Image(
+        width: 100,
+        image: AssetImage(selectedItem),
+      ),
+    ),
+  );
+}
+
 class BottomItemActive extends StatelessWidget {
   final String selectedItem;
   BottomItemActive(this.selectedItem);
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(5.0),
+      padding: const EdgeInsets.fromLTRB(0, 9, 0, 9),
       child: Image(
+        width: 100,
         image: AssetImage(selectedItem),
       ),
     );
@@ -97,10 +175,14 @@ class BottomItemInactive extends StatelessWidget {
   BottomItemInactive(this.unselectedItem);
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(5.0),
-      child: Image(
-        image: AssetImage(unselectedItem),
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 10),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 9, 0, 9),
+        child: Image(
+          width: 100,
+          image: AssetImage(unselectedItem),
+        ),
       ),
     );
   }
