@@ -10,15 +10,16 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: ListView.builder(
-      itemCount: chatData.length,
-      itemBuilder: (context, i) => Column(
-        children: [
-          singleMessage(
-              chatData[i].address, chatData[i].name, chatData[i].message),
-        ],
+      child: ListView.builder(
+        itemCount: chatData.length,
+        itemBuilder: (context, i) => Column(
+          children: [
+            singleMessage(
+                chatData[i].address, chatData[i].name, chatData[i].message),
+          ],
+        ),
       ),
-    ));
+    );
   }
 }
 
@@ -26,14 +27,16 @@ Widget singleMessage(String text1, String text2, String text3) {
   return Container(
     color: Colors.white,
     child: Padding(
-      padding: const EdgeInsets.all(5),
+      padding: const EdgeInsets.fromLTRB(5, 5, 5, 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
               CircleAvatar(
+                radius: 25,
                 backgroundColor: Colors.yellow,
+                backgroundImage: AssetImage("assets/profile_image.png"),
               ),
               SizedBox(
                 width: 10,
@@ -52,7 +55,7 @@ Widget singleMessage(String text1, String text2, String text3) {
                   Text(
                     text2,
                     style: TextStyle(
-                      fontSize: 8,
+                      fontSize: 12,
                       color: Colors.grey,
                     ),
                   ),

@@ -3,7 +3,7 @@ import 'package:monkhood/pages/Profile_page.dart';
 import 'pages/home_page.dart';
 import 'pages/message_page.dart';
 import 'package:flutter/cupertino.dart';
-import 'pages/Feedback_page.dart';
+import 'pages/Favourite_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,6 +18,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primaryColor: Color(0xFF345C5F),
+        fontFamily: "Montserrat",
+      ),
       home: CupertinoTabScaffold(
           tabBar: CupertinoTabBar(
             items: [
@@ -67,7 +71,7 @@ class _MyAppState extends State<MyApp> {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(0, 9, 15, 9),
                     child: Image(
-                      image: AssetImage('assets/feedback_unselected.png'),
+                      image: AssetImage('assets/feedback_selected.png'),
                     ),
                   ),
                 ),
@@ -122,7 +126,7 @@ class _MyAppState extends State<MyApp> {
                 return CupertinoTabView(builder: (context) {
                   return CupertinoPageScaffold(
                     resizeToAvoidBottomInset: false,
-                    child: FeedbackPage(),
+                    child: FavouritePage(),
                   );
                 });
               case 3:

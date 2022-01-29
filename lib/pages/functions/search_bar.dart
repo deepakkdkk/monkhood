@@ -18,6 +18,8 @@ class _SearchBarState extends State<SearchBar> {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(10, 17, 10, 17),
               child: TextField(
+                textAlign: TextAlign.start,
+                textAlignVertical: TextAlignVertical(y: 1),
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Color(0xFFF2F2F2),

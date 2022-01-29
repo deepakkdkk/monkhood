@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monkhood/pages/MessagesFiles/all_screen_page.dart';
+import 'package:monkhood/pages/MessagesFiles/calls_screen_page.dart';
 import 'package:monkhood/pages/home_page.dart';
 
 class Message extends StatefulWidget {
@@ -52,17 +53,26 @@ class _MessageState extends State<Message> with SingleTickerProviderStateMixin {
         elevation: 0.0,
         backgroundColor: Colors.white,
         title: Text(
-          'Message',
+          'Inbox',
           style: TextStyle(
             color: Color(0xFF345C5F),
           ),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: Icon(
+              Icons.bookmark,
+              color: Color(0xFF345C5F),
+              size: 30,
+            ),
+          ),
+        ],
         // bottom: ,
       ),
       body: Padding(
         padding: EdgeInsets.all(8),
         child: Column(
-          
           children: [
             Container(
               height: 45,
@@ -73,8 +83,17 @@ class _MessageState extends State<Message> with SingleTickerProviderStateMixin {
               child: TabBar(
                 controller: _tabController,
                 unselectedLabelColor: Color(0xFF345C5F),
+                unselectedLabelStyle: TextStyle(
+                  fontWeight: FontWeight.normal,
+                  fontFamily: "Montserrat",
+                ),
+                labelStyle: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "Montserrat",
+                ),
                 // unselectedLabelStyle: TextStyle(),
                 indicator: BoxDecoration(
+                  
                     color: Color(0xFF345C5F),
                     borderRadius: BorderRadius.circular(30)),
                 tabs: topTabs,
@@ -85,8 +104,8 @@ class _MessageState extends State<Message> with SingleTickerProviderStateMixin {
                 controller: _tabController,
                 children: [
                   ChatPage(),
-                  Text('status'),
                   Text('Calls'),
+                  CallScreen(),
                 ],
               ),
             ),
