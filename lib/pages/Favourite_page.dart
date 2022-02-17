@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monkhood/pages/FavouriteFiles/enquireModel.dart';
 import 'package:monkhood/pages/functions/search_bar.dart';
-import 'package:monkhood/pages/functions/build_Sheet.dart';
 
 class FavouritePage extends StatefulWidget {
   @override
@@ -133,8 +132,12 @@ Widget singleFavourite() {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 12.0),
-                          child: RaisedButton(
-                            color: Color(0xFF345C5F),
+                          child: ElevatedButton(
+                            // color: Color(0xFF345C5F),
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(Color(0xFF345C5F)),
+                            ),
                             onPressed: () {},
                             child: Text(
                               "ENQUIRE",
@@ -206,7 +209,7 @@ Widget singleFavourite() {
 }
 
 class CardBox2 extends StatefulWidget {
-  String textTitle;
+  final String textTitle;
   CardBox2(this.textTitle);
   @override
   _CardBox2State createState() => _CardBox2State();

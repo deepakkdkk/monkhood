@@ -46,8 +46,12 @@ Widget buildSheet() => DraggableScrollableSheet(
                     ),
                     Expanded(
                       flex: 3,
-                      child: RaisedButton(
-                        color: Color(0xFF345C5F),
+                      child: ElevatedButton(
+                        // color: Color(0xFF345C5F),
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Color(0xFF345C5F)),
+                        ),
                         onPressed: () {},
                         child: Text(
                           "ENQUIRE",

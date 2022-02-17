@@ -1,4 +1,4 @@
-import 'dart:developer';
+
 import 'functions/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'functions/services.dart';

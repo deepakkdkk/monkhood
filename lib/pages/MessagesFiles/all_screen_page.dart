@@ -1,5 +1,8 @@
+// import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:monkhood/pages/MessagesFiles/chatModels.dart';
+import 'chatscreen.dart';
 
 class ChatPage extends StatefulWidget {
   @override
@@ -14,8 +17,8 @@ class _ChatPageState extends State<ChatPage> {
         itemCount: chatData.length,
         itemBuilder: (context, i) => Column(
           children: [
-            singleMessage(
-                chatData[i].address, chatData[i].name, chatData[i].message),
+            singleMessage(context, chatData[i].address, chatData[i].name,
+                chatData[i].message),
           ],
         ),
       ),
@@ -23,7 +26,8 @@ class _ChatPageState extends State<ChatPage> {
   }
 }
 
-Widget singleMessage(String text1, String text2, String text3) {
+Widget singleMessage(
+    BuildContext context, String text1, String text2, String text3) {
   return Container(
     color: Colors.white,
     child: Padding(
@@ -31,37 +35,45 @@ Widget singleMessage(String text1, String text2, String text3) {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              CircleAvatar(
-                radius: 25,
-                backgroundColor: Colors.yellow,
-                backgroundImage: AssetImage("assets/profile_image.png"),
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    text1,
-                    style: TextStyle(
-                      fontFamily: 'Montserrat',
-                      fontSize: 20,
-                      color: Color(0xFF345C5F),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ChatScreen(text1, text2)),
+              );
+            },
+            child: Row(
+              children: [
+                CircleAvatar(
+                  radius: 25,
+                  backgroundColor: Colors.yellow,
+                  backgroundImage: AssetImage("assets/profile_image.png"),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      text1,
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontSize: 20,
+                        color: Color(0xFF345C5F),
+                      ),
                     ),
-                  ),
-                  Text(
-                    text2,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey,
+                    Text(
+                      text2,
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Colors.grey,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
           SizedBox(
             height: 10,

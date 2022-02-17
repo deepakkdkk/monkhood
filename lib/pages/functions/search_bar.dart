@@ -29,13 +29,13 @@ class _SearchBarState extends State<SearchBar> {
                   ),
                   prefixIcon: Align(
                     widthFactor: 0.1,
-                    child: FlatButton(
+                    child: InkWell(
                       child: Image(
                         height: 20,
                         width: 20,
                         image: AssetImage("assets/search_image.png"),
                       ),
-                      onPressed: () {},
+                      onTap: () {},
                     ),
                   ),
                   hintText: 'Enter the place name',

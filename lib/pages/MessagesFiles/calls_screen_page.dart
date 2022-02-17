@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'callModels.dart';
-class CallScreen extends StatefulWidget {
-  
 
+class CallScreen extends StatefulWidget {
   @override
   _CallScreenState createState() => _CallScreenState();
 }
@@ -16,7 +15,9 @@ class _CallScreenState extends State<CallScreen> {
         itemBuilder: (context, i) => Column(
           children: [
             singleMessage(
-                callData[i].address, callData[i].name,),
+              callData[i].address,
+              callData[i].name,
+            ),
           ],
         ),
       ),
@@ -89,7 +90,6 @@ Widget singleMessage(String text1, String text2) {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              
               // Expanded(
               //   flex: 1,
               //   child: Text('2:19'),

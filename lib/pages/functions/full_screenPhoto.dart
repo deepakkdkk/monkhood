@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'last_searchPage.dart';
 import 'build_Sheet.dart';
-import 'build_Sheet.dart';
-import 'heading_page.dart';
-import 'last_searchTap.dart';
 
 class FullScreenPhoto extends StatefulWidget {
   final String image;

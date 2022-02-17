@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'heading_page.dart';
-import 'full_screenPhoto.dart';
 import 'build_Sheet.dart';
 
 class LastSearchTap extends StatefulWidget {
@@ -95,8 +94,11 @@ class _LastSearchTapState extends State<LastSearchTap> {
                               ),
                               Expanded(
                                 flex: 1,
-                                child: RaisedButton(
-                                  color: Color(0xFF345C5F),
+                                child: ElevatedButton(
+                                  // color: Color(0xFF345C5F),
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(Color(0xFF345C5F)),    
+                                  ),
                                   onPressed: () {},
                                   child: Text(
                                     "ENQUIRE",
