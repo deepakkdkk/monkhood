@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:monkhood/startingScreen.dart';
+import 'package:monkhood/pages/startingScreen/startingScreen.dart';
+
 
 void main() {
   runApp(MyApp());
