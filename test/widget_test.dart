@@ -13,7 +13,8 @@ import 'package:monkhood/main.dart';
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
+    final bool showHome = false;
+    await tester.pumpWidget(MyApp(showHome));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

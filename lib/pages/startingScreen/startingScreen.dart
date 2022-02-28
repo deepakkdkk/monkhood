@@ -6,6 +6,8 @@ import 'package:monkhood/pages/startingScreen/logoAnimationPage.dart';
 
 
 class StartingScreen extends StatefulWidget {
+  final bool showHome;
+  StartingScreen(this.showHome);
   @override
   _StartingScreenState createState() => _StartingScreenState();
 }
@@ -21,7 +23,7 @@ class _StartingScreenState extends State<StartingScreen> {
           controller: pageController2,
           children: [
             LogoAnimationPage(),
-            HomeSkipPages(),
+            HomeSkipPages(widget.showHome),
           ],
         ),
       ),

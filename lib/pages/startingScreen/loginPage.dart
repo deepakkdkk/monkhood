@@ -1,17 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:monkhood/bottomBar.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage>
-    {
-    
+class _LoginPageState extends State<LoginPage> {
+  var email = "";
+  var password = "";
   TextEditingController emailController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
   bool valueFirst = false;
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  clearText() {
+    emailController.clear();
+    passwordController.clear();
+  }
+
+  Future<int> createAlbum(String email, String password) async {
+    final response = await http.post(
+      Uri.parse('https://monkhood-api.herokuapp.com/api/test'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        "email": email,
+        "password": password,
+      }),
+    );
+    print(response.statusCode);
+    print("post code");
+    print(response.body);
+    return response.statusCode;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -209,13 +240,21 @@ class _LoginPageState extends State<LoginPage>
                               ),
                             ),
                           ),
-                          onPressed: () {
-                            
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => BottomTabBar()),
-                            );
+                          onPressed: () async {
+                            email = emailController.text;
+                            password = passwordController.text;
+                            int res = await createAlbum(email, password);
+                            if (res == 200) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => BottomTabBar()),
+                              );
+                            }
+
+                            setState(() {
+                              clearText();
+                            });
                           },
                         ),
                       ),

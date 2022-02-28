@@ -27,27 +27,30 @@ class _SignUpPageState extends State<SignUpPage> {
     passwordController.dispose();
     super.dispose();
   }
+
   clearText() {
     nameController.clear();
     emailController.clear();
     passwordController.clear();
   }
-  Future<void> createAlbum(String name,String email, String password) async {
+
+  Future<int> createAlbum(String name, String email, String password) async {
     final response = await http.post(
       Uri.parse('https://monkhood-api.herokuapp.com/api/signup'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(<String, String>{
-         "name": name,
+        "name": name,
         "email": email,
-        "password" : password,
+        "password": password,
         // "loginType": loginType,
       }),
     );
     print(response.statusCode);
     print("post code");
     print(response.body);
+    return response.statusCode;
   }
 
   @override
@@ -138,7 +141,8 @@ class _SignUpPageState extends State<SignUpPage> {
                               width: 4,
                             ),
                           ),
-                          child: TextField(
+                          child: TextFormField(
+                            
                             controller: nameController,
                             textAlign: TextAlign.center,
                             decoration: InputDecoration(
@@ -193,7 +197,6 @@ class _SignUpPageState extends State<SignUpPage> {
                               hintText: 'Password',
                               border: InputBorder.none,
                             ),
-                            
                           ),
                         ),
                       ),
@@ -265,16 +268,19 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                           ),
                           onTap: () async {
-                           name = nameController.text;
-                           email = emailController.text;
-                           password = passwordController.text; 
-                            await createAlbum(name, email, password);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ApiSignup(name, email, password)),
-                                  // builder: (context) => BottomTabBar(),)
-                            );
+                            name = nameController.text;
+                            email = emailController.text;
+                            password = passwordController.text;
+                            int res = await createAlbum(name, email, password);
+                            if (res == 200) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ApiSignup(name, email, password)),
+                                // builder: (context) => BottomTabBar(),)
+                              );
+                            }
                           },
                         ),
                       ),

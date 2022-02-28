@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:monkhood/bottomBar.dart';
 import 'package:monkhood/pages/startingScreen/loginPage.dart';
 import 'package:monkhood/pages/startingScreen/signUpPage.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeSkipPages extends StatefulWidget {
+  final bool showHome;
+  HomeSkipPages(this.showHome);
   @override
   _HomeSkipPagesState createState() => _HomeSkipPagesState();
 }
 
-class _HomeSkipPagesState extends State<HomeSkipPages> {
+class _HomeSkipPagesState extends State<HomeSkipPages> with SingleTickerProviderStateMixin{
   PageController pageController = new PageController();
   @override
   Widget build(BuildContext context) {
@@ -54,7 +57,7 @@ class _HomeSkipPagesState extends State<HomeSkipPages> {
                             activeDotColor: Colors.indigo),
                         onDotClicked: (index) {
                           return pageController.animateToPage(index,
-                              duration: Duration(milliseconds: 500),
+                              duration: Duration(milliseconds: 250),
                               curve: Curves.bounceInOut);
                         },
                       ),
@@ -94,13 +97,42 @@ class _StartingScreenImageState extends State<StartingScreenImage> {
             fit: BoxFit.fitWidth,
           ),
         ),
-        Text(
-          '${widget.text}',
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: 60,
-              fontWeight: FontWeight.bold,
-              fontFamily: 'Montserrat'),
+        Positioned(
+          top: 15,
+          right: 15,
+          child: InkWell(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(15),
+                )
+              ),
+              child: Center(child: 
+              Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Text('Skip'),
+              ),),
+            ),
+            onTap: () async{
+              final prefs = await SharedPreferences.getInstance();
+              prefs.setBool('showHome', true);
+            
+              Navigator.push(context, MaterialPageRoute(builder: (context) => BottomTabBar()));
+            },
+          ),
+          
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+          child: Text(
+            '${widget.text}',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 60,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Montserrat'),
+          ),
         ),
       ],
     );
