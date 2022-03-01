@@ -4,8 +4,8 @@ import 'package:monkhood/bottomBar.dart';
 import 'package:monkhood/pages/startingScreen/startingScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() async {
-  
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   final prefs = await SharedPreferences.getInstance();
   final showHome = prefs.getBool('showHome') ?? false;
   runApp(MyApp(showHome));
@@ -22,6 +22,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Color(0xFF345C5F),
         fontFamily: "Montserrat",

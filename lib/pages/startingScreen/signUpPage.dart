@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:monkhood/bottomBar.dart';
 import 'package:monkhood/pages/startingScreen/apicheckingsignup.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 // import '../../bottomBar.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -114,7 +115,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 5,
                       ),
                       Divider(
                         indent: MediaQuery.of(context).size.width / 3,
@@ -142,7 +143,6 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                           ),
                           child: TextFormField(
-                            
                             controller: nameController,
                             textAlign: TextAlign.center,
                             decoration: InputDecoration(
@@ -153,7 +153,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                       SizedBox(
-                        height: 5,
+                        height: MediaQuery.of(context).size.height * 0.005,
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -177,7 +177,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                       SizedBox(
-                        height: 5,
+                        height: MediaQuery.of(context).size.height * 0.005,
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -201,7 +201,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       ),
                       SizedBox(
-                        height: 5,
+                        height: MediaQuery.of(context).size.height * 0.01,
                       ),
                       Container(
                         margin: EdgeInsets.all(8),
@@ -210,7 +210,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           style: TextStyle(
                             color: Colors.black,
                             fontFamily: 'Montserarrat',
-                            fontSize: 20,
+                            fontSize: MediaQuery.of(context).size.height * 0.02,
                             decoration: TextDecoration.none,
                           ),
                         ),
@@ -237,56 +237,112 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 35),
-                        child: InkWell(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Color(0XFFDEECED),
-                              borderRadius: BorderRadius.circular(40),
-                              border: Border.all(
-                                color: Color(0XFF345C5F),
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                'Proceed',
-                                style: TextStyle(
-                                  fontSize: 40,
+                      Container(
+                        margin: EdgeInsets.symmetric(vertical: 10),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 35),
+                          child: InkWell(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Color(0XFFDEECED),
+                                borderRadius: BorderRadius.circular(40),
+                                border: Border.all(
                                   color: Color(0XFF345C5F),
-                                  fontFamily: 'Montserrat',
-                                  decoration: TextDecoration.none,
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Proceed',
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    color: Color(0XFF345C5F),
+                                    fontFamily: 'Montserrat',
+                                    decoration: TextDecoration.none,
+                                  ),
                                 ),
                               ),
                             ),
+                            onTap: () async {
+                              name = nameController.text;
+                              email = emailController.text;
+                              password = passwordController.text;
+                              int res =
+                                  await createAlbum(name, email, password);
+                              if (res == 200) {
+                                final prefs =
+                                    await SharedPreferences.getInstance();
+                                prefs.setBool('showHome', true);
+
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      // builder: (context) =>
+                                      //     ApiSignup(name, email, password)),
+                                      builder: (context) => BottomTabBar(),
+                                    ));
+                              }
+                            },
                           ),
-                          onTap: () async {
-                            name = nameController.text;
-                            email = emailController.text;
-                            password = passwordController.text;
-                            int res = await createAlbum(name, email, password);
-                            if (res == 200) {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        ApiSignup(name, email, password)),
-                                // builder: (context) => BottomTabBar(),)
-                              );
-                            }
-                          },
                         ),
                       ),
                     ],
                   ),
                 ),
+                // Expanded(
+                //   flex: 1,
+                //   child: Column(
+                //     children: [
+                //       Container(
+                //         margin: EdgeInsets.symmetric(vertical: 10),
+                //         child: Padding(
+
+                //           padding: const EdgeInsets.symmetric(horizontal: 35),
+                //           child: InkWell(
+                //             child: Container(
+                //               decoration: BoxDecoration(
+                //                 color: Color(0XFFDEECED),
+                //                 borderRadius: BorderRadius.circular(40),
+                //                 border: Border.all(
+                //                   color: Color(0XFF345C5F),
+                //                 ),
+                //               ),
+                //               child: Center(
+                //                 child: Text(
+                //                   'Proceed',
+                //                   style: TextStyle(
+                //                     fontSize: 40,
+                //                     color: Color(0XFF345C5F),
+                //                     fontFamily: 'Montserrat',
+                //                     decoration: TextDecoration.none,
+                //                   ),
+                //                 ),
+                //               ),
+                //             ),
+                //             onTap: () async {
+                //               name = nameController.text;
+                //               email = emailController.text;
+                //               password = passwordController.text;
+                //               int res = await createAlbum(name, email, password);
+                //               if (res == 200) {
+                //                 final prefs =
+                //                     await SharedPreferences.getInstance();
+                //                 prefs.setBool('showHome', true);
+
+                //                 Navigator.push(
+                //                   context,
+                //                   MaterialPageRoute(
+                //                       // builder: (context) =>
+                //                       //     ApiSignup(name, email, password)),
+                //                   builder: (context) => BottomTabBar(),)
+                //                 );
+                //               }
+                //             },
+                //           ),
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
               ],
             ),
           )
